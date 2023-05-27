@@ -79,6 +79,11 @@ main {
 	}
 }
 
+.key-off {
+	background-color: lighten($secondary-color, 10%) !important;
+	pointer-events: none;
+}
+
 .key-function {
 	background-color: darken($secondary-color, 25%);
 
@@ -99,7 +104,7 @@ main {
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
-	background-color: $light;
+	background-color: $light !important;
 	max-width: 100%;
 
 	&:hover {

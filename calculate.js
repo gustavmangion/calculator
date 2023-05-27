@@ -33,6 +33,7 @@ const allowedKeys = [
 	"Enter",
 	"c",
 	"t",
+	"p",
 ];
 let operationsCount = 0;
 let petCount = 0;
@@ -221,6 +222,9 @@ function keyPressed(e) {
 				break;
 			case "t":
 				doFunctionKey("treat");
+				break;
+			case "p":
+				catPet();
 				break;
 			default:
 				doKeyPressed(e.key);

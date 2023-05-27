@@ -206,7 +206,8 @@ function doCalculate(instructions, action) {
 }
 
 function keyPressed(e) {
-	if (allowedKeys.includes(e.key)) {
+	if (operationsCount >= 3) activatePetting();
+	else if (allowedKeys.includes(e.key)) {
 		switch (e.key) {
 			case "=":
 				doFunctionKey("equals");

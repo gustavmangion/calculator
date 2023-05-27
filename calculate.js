@@ -20,6 +20,9 @@ function doFunctionKey(key) {
 		case "treat":
 			turnOnOff();
 			break;
+		case "clear":
+			screenText = onText;
+			break;
 		default:
 			break;
 	}

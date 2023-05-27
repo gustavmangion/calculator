@@ -84,7 +84,53 @@ function calculate() {
 			toCalc[toCalc.length - 1] = toCalc[toCalc.length - 1] + textSplit[i];
 		}
 	}
-	console.log(toCalc);
+
+	let result = doCalculate(toCalc, "*");
+	result = doCalculate(result, "/");
+	result = doCalculate(result, "+");
+	result = doCalculate(result, "-");
+
+	screenText = result[0];
+}
+
+function doCalculate(instructions, action) {
+	const index = instructions.indexOf(action);
+	if (index === -1) return instructions;
+
+	let calcResult = 0;
+	switch (action) {
+		case "*":
+			calcResult =
+				parseFloat(instructions[index - 1]) *
+				parseFloat(instructions[index + 1]);
+			break;
+		case "/":
+			calcResult =
+				parseFloat(instructions[index - 1]) /
+				parseFloat(instructions[index + 1]);
+			break;
+		case "+":
+			calcResult =
+				parseFloat(instructions[index - 1]) +
+				parseFloat(instructions[index + 1]);
+			break;
+		case "-":
+			calcResult =
+				parseFloat(instructions[index - 1]) -
+				parseFloat(instructions[index + 1]);
+			break;
+	}
+	let newInstructions = [];
+
+	if (index > 1)
+		newInstructions = newInstructions.concat(instructions.slice(0, index - 1));
+
+	newInstructions.push(calcResult);
+
+	if (index + 2 < instructions.length)
+		newInstructions = newInstructions.concat(instructions.slice(index + 2));
+
+	return doCalculate(newInstructions, action);
 }
 
 function init() {

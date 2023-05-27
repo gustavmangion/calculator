@@ -28,6 +28,7 @@ const allowedKeys = [
 	"*",
 	"/",
 	"=",
+	".",
 	"Backspace",
 	"Enter",
 	"c",
@@ -133,7 +134,6 @@ function calculate() {
 	const textSplit = screenText.split("");
 	if (operators.includes(textSplit[textSplit.length - 1]))
 		textSplit.pop(textSplit.length - 1);
-	toCalc.push(textSplit[0]);
 	for (let i = 1; i < textSplit.length; i++) {
 		if (operators.includes(textSplit[i])) toCalc.push(textSplit[i]);
 		else if (operators.includes(toCalc[toCalc.length - 1]))
@@ -155,7 +155,6 @@ function calculate() {
 	}
 	screenText = (+parseFloat(result[0]).toFixed(5)).toString();
 	++operationsCount;
-	console.log(typeof screenText);
 }
 
 function doCalculate(instructions, action) {

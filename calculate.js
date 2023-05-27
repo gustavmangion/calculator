@@ -10,7 +10,7 @@ const screen = document.querySelector(".screen");
 const treatKey = document.querySelector("#treat");
 const equalKey = document.querySelector("#equals");
 const operators = ["*", "-", "/", "+"];
-const catPurr = new Audio("sounds/purr.mp3");
+const catPurr = new Audio("assets/sounds/purr.mp3");
 let operationsCount = 0;
 let petCount = 0;
 

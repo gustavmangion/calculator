@@ -106,13 +106,13 @@ function calculate() {
 			toCalc[toCalc.length - 1] = toCalc[toCalc.length - 1] + textSplit[i];
 		}
 	}
-
+	if (toCalc.length < 2) return;
 	let result = doCalculate(toCalc, "*");
 	result = doCalculate(result, "/");
 	result = doCalculate(result, "+");
 	result = doCalculate(result, "-");
 
-	screenText = result[0];
+	screenText = result[0].toString();
 	++operationsCount;
 }
 

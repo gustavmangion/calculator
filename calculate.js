@@ -114,6 +114,8 @@ function doKeyPressed(action) {
 		if (screenText === "") return;
 		if (operators.includes(screenText.slice(-1))) {
 			screenText = screenText.slice(0, -1);
+		} else if (screenText.slice(-1) === ".") {
+			screenText = screenText + "0";
 		}
 		decimalSinceLastOperand = false;
 	} else if (action === ".") {

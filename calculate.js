@@ -12,6 +12,27 @@ const equalKey = document.querySelector("#equals");
 const operators = ["*", "-", "/", "+"];
 const catMeow = new Audio("assets/sounds/meow.mp3");
 const catPurr = new Audio("assets/sounds/purr.mp3");
+const allowedKeys = [
+	"1",
+	"2",
+	"3",
+	"4",
+	"5",
+	"6",
+	"7",
+	"8",
+	"9",
+	"0",
+	"-",
+	"+",
+	"*",
+	"/",
+	"=",
+	"Backspace",
+	"Enter",
+	"c",
+	"t",
+];
 let operationsCount = 0;
 let petCount = 0;
 let decimalSinceLastOperand = false;
@@ -40,10 +61,12 @@ function catPet(e) {
 }
 
 function doFunctionKey(key) {
+	if (key === "treat") {
+		turnOnOff();
+		return;
+	}
+	if (!calcOn) return;
 	switch (key) {
-		case "treat":
-			turnOnOff();
-			break;
 		case "clear":
 			screenText = onText;
 			decimalSinceLastOperand = false;
@@ -83,6 +106,7 @@ function calcOnGreyKeys() {
 }
 
 function doKeyPressed(action) {
+	if (!calcOn) return;
 	if (screenText === onText) screenText = "";
 
 	if (operators.includes(action)) {
@@ -176,8 +200,35 @@ function doCalculate(instructions, action) {
 	return doCalculate(newInstructions, action);
 }
 
+function keyPressed(e) {
+	if (allowedKeys.includes(e.key)) {
+		switch (e.key) {
+			case "=":
+				doFunctionKey("equals");
+				break;
+			case "Backspace":
+				doFunctionKey("bspace");
+				break;
+			case "Enter":
+				doFunctionKey("equals");
+				break;
+			case "c":
+				doFunctionKey("clear");
+				break;
+			case "t":
+				doFunctionKey("treat");
+				break;
+			default:
+				doKeyPressed(e.key);
+		}
+	}
+
+	screen.innerText = screenText;
+}
+
 function init() {
 	buttons.forEach((x) => x.addEventListener("click", buttonPressed));
+	document.addEventListener("keydown", keyPressed);
 	treatKey.innerText = treatKeyOffText;
 	screenText = offText;
 	screen.innerText = screenText;

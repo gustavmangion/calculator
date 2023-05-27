@@ -108,6 +108,7 @@ function calcOnGreyKeys() {
 function doKeyPressed(action) {
 	if (!calcOn) return;
 	if (screenText === onText) screenText = "";
+	console.log(typeof screenText);
 
 	if (operators.includes(action)) {
 		if (operators.includes(screenText.slice(-1))) {
@@ -152,8 +153,9 @@ function calculate() {
 		result = doCalculate(result, "+");
 		result = doCalculate(result, "-");
 	}
-	screenText = +parseFloat(result[0]).toFixed(5).toString();
+	screenText = (+parseFloat(result[0]).toFixed(5)).toString();
 	++operationsCount;
+	console.log(typeof screenText);
 }
 
 function doCalculate(instructions, action) {

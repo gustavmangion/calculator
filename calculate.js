@@ -23,6 +23,9 @@ function doFunctionKey(key) {
 		case "clear":
 			screenText = onText;
 			break;
+		case "bspace":
+			backspace();
+			break;
 		default:
 			break;
 	}
@@ -57,6 +60,11 @@ function doKeyPressed(action) {
 		screenText = screenText.slice(0, -1);
 
 	screenText += action;
+}
+
+function backspace() {
+	if (screenText != onText && screenText.length > 0)
+		screenText = screenText.slice(0, -1);
 }
 
 function init() {

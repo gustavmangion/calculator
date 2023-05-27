@@ -10,6 +10,7 @@ const screen = document.querySelector(".screen");
 const treatKey = document.querySelector("#treat");
 const equalKey = document.querySelector("#equals");
 const operators = ["*", "-", "/", "+"];
+const catMeow = new Audio("assets/sounds/meow.mp3");
 const catPurr = new Audio("assets/sounds/purr.mp3");
 let operationsCount = 0;
 let petCount = 0;
@@ -68,6 +69,7 @@ function turnOnOff() {
 		treatKey.innerText = treatKeyOffText;
 		calcOffGreyKeys();
 	}
+	catMeow.play();
 }
 
 function calcOffGreyKeys() {
@@ -106,7 +108,7 @@ function calculate() {
 			toCalc[toCalc.length - 1] = toCalc[toCalc.length - 1] + textSplit[i];
 		}
 	}
-	if (toCalc.length < 2) return;
+	if (toCalc.length < 3) return;
 	let result = doCalculate(toCalc, "*");
 	result = doCalculate(result, "/");
 	result = doCalculate(result, "+");

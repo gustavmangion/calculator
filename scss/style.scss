@@ -108,3 +108,20 @@ main {
 		scale: 0.9;
 	}
 }
+
+footer {
+	img {
+		width: 2em;
+		margin-left: 0.5em;
+	}
+}
+
+a {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+
+	&:visited {
+		color: inherit;
+	}
+}

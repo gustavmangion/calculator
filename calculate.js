@@ -26,6 +26,9 @@ function doFunctionKey(key) {
 		case "bspace":
 			backspace();
 			break;
+		case "equals":
+			calculate();
+			break;
 		default:
 			break;
 	}
@@ -65,6 +68,23 @@ function doKeyPressed(action) {
 function backspace() {
 	if (screenText != onText && screenText.length > 0)
 		screenText = screenText.slice(0, -1);
+}
+
+function calculate() {
+	let toCalc = [];
+	const textSplit = screenText.split("");
+	if (operators.includes(textSplit[textSplit.length - 1]))
+		textSplit.pop(textSplit.length - 1);
+	toCalc.push(textSplit[0]);
+	for (let i = 1; i < textSplit.length; i++) {
+		if (operators.includes(textSplit[i])) toCalc.push(textSplit[i]);
+		else if (operators.includes(toCalc[toCalc.length - 1]))
+			toCalc.push(textSplit[i]);
+		else {
+			toCalc[toCalc.length - 1] = toCalc[toCalc.length - 1] + textSplit[i];
+		}
+	}
+	console.log(toCalc);
 }
 
 function init() {

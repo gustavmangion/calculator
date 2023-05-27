@@ -59,8 +59,6 @@ main {
 }
 
 .key {
-	// display: flex;
-	// flex-direction: column;
 	background-color: $secondary-color;
 	border: none;
 	margin: 0.5em;
@@ -69,6 +67,7 @@ main {
 	align-items: center;
 	justify-content: center;
 	font-weight: bold;
+	font-size: 1.1rem;
 	max-width: 5em;
 
 	&:hover {

@@ -123,7 +123,7 @@ function calculate() {
 	result = doCalculate(result, "+");
 	result = doCalculate(result, "-");
 
-	screenText = result[0].toString();
+	screenText = +parseFloat(result[0]).toFixed(5).toString();
 	++operationsCount;
 }
 

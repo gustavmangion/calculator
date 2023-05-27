@@ -45,7 +45,7 @@ main {
 	align-items: center;
 	grid-column: 1/6;
 	background-color: $dark;
-	margin: 1em;
+	margin: 1em 0.5em;
 	padding: 0.5em 1em;
 	color: white;
 	font-size: 2rem;
@@ -59,15 +59,17 @@ main {
 }
 
 .key {
-	display: flex;
-	flex-direction: column;
+	// display: flex;
+	// flex-direction: column;
 	background-color: $secondary-color;
+	border: none;
 	margin: 0.5em;
 	padding: 1em;
 	border-radius: 2em;
 	align-items: center;
 	justify-content: center;
 	font-weight: bold;
+	max-width: 5em;
 
 	&:hover {
 		background-color: lighten($secondary-color, 10%);
@@ -88,6 +90,7 @@ main {
 
 .wide {
 	grid-column: span 2;
+	max-width: 100%;
 }
 
 .equals {
@@ -98,6 +101,7 @@ main {
 	background-size: contain;
 	background-position: center;
 	background-color: $light;
+	max-width: 100%;
 
 	&:hover {
 		scale: 0.95;

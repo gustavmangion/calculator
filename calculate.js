@@ -3,6 +3,7 @@ let calcOn = false;
 const onText = "Let's Meow!";
 const offText = "zzz ...";
 const petMeText = "Pet me!";
+const hissText = "Hiss!";
 const treatKeyOffText = "Give Treat";
 const treatKeyOnText = "Give Catnip";
 const buttons = document.querySelectorAll(".key");
@@ -12,6 +13,7 @@ const equalKey = document.querySelector("#equals");
 const operators = ["*", "-", "/", "+"];
 const catMeow = new Audio("assets/sounds/meow.mp3");
 const catPurr = new Audio("assets/sounds/purr.mp3");
+const catHiss = new Audio("assets/sounds/hiss.mp3");
 const allowedKeys = [
 	"1",
 	"2",
@@ -109,10 +111,14 @@ function calcOnGreyKeys() {
 
 function doKeyPressed(action) {
 	if (!calcOn) return;
-	if (screenText === onText) screenText = "";
+	if (screenText === onText || screenText === hissText) screenText = "";
 
 	if (operators.includes(action)) {
-		if (screenText === "") return;
+		if (screenText === "") {
+			screenText = hissText;
+			catHiss.play();
+			return;
+		}
 		if (operators.includes(screenText.slice(-1))) {
 			screenText = screenText.slice(0, -1);
 		} else if (screenText.slice(-1) === ".") {

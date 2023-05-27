@@ -120,9 +120,14 @@ function calculate() {
 	if (toCalc.length < 3) return;
 	let result = doCalculate(toCalc, "*");
 	result = doCalculate(result, "/");
-	result = doCalculate(result, "+");
-	result = doCalculate(result, "-");
 
+	if (result === 0) {
+		screenText = "Hiss at divide by 0";
+		return;
+	} else {
+		result = doCalculate(result, "+");
+		result = doCalculate(result, "-");
+	}
 	screenText = +parseFloat(result[0]).toFixed(5).toString();
 	++operationsCount;
 }
@@ -139,9 +144,13 @@ function doCalculate(instructions, action) {
 				parseFloat(instructions[index + 1]);
 			break;
 		case "/":
-			calcResult =
-				parseFloat(instructions[index - 1]) /
-				parseFloat(instructions[index + 1]);
+			if (instructions[index + 1] === "0") {
+				return 0;
+			} else {
+				calcResult =
+					parseFloat(instructions[index - 1]) /
+					parseFloat(instructions[index + 1]);
+			}
 			break;
 		case "+":
 			calcResult =

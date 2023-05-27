@@ -7,10 +7,11 @@ const treatKeyOnText = "Give Catnip";
 const buttons = document.querySelectorAll(".key");
 const screen = document.querySelector(".screen");
 const treatKey = document.querySelector("#treat");
+const operators = ["*", "-", "/", "+"];
 
 function buttonPressed(e) {
 	if (e.target.id !== "") doFunctionKey(e.target.id);
-	else doKeyPressed(e.target);
+	else doKeyPressed(e.target.innerText);
 	screen.innerText = screenText;
 }
 
@@ -46,14 +47,13 @@ function calcOnGreyKeys() {
 	buttons.forEach((x) => x.classList.remove("key-off"));
 }
 
-function doKeyPressed(e) {
-	if (!calcOn) return;
+function doKeyPressed(action) {
+	if (screenText === onText) screenText = "";
 
-	const action = e.target.innerText;
-	console.log(action);
-	// switch (action) {
-	//     case
-	// }
+	if (operators.includes(action) && operators.includes(screenText.slice(-1)))
+		screenText = screenText.slice(0, -1);
+
+	screenText += action;
 }
 
 function init() {

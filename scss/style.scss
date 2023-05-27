@@ -1,5 +1,86 @@
+@import "config";
+
 * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
+}
+
+.container {
+	display: grid;
+	place-items: center;
+	height: 100vh;
+	font-family: "Orbitron", sans-serif;
+	font-size: 1rem;
+}
+header {
+	text-align: center;
+
+	h1 {
+		padding-bottom: 0.2em;
+		font-size: 3rem;
+	}
+}
+
+main {
+	display: grid;
+	grid-template-columns: 1fr 4fr 1fr;
+}
+
+.calculator {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 2fr;
+	grid-template-rows: 2fr 1fr 1fr 1fr 1fr 1fr;
+	grid-column-start: 2;
+	background-color: $light;
+	padding: 2em;
+	border-radius: 3em;
+	box-shadow: 4px 13px 29px 2px rgba(186, 186, 186, 1);
+}
+
+.screen {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	grid-column: 1/5;
+	background-color: $dark;
+	margin: 1em;
+	padding: 0.5em;
+	color: white;
+	font-size: 2rem;
+}
+
+.side-functions {
+	grid-column: 4;
+	grid-row: 2/5;
+	display: grid;
+	grid-template-rows: repear(4, 1fr);
+}
+
+.key {
+	display: flex;
+	flex-direction: column;
+	background-color: $secondary-color;
+	margin: 0.5em;
+	padding: 1em;
+	border-radius: 2em;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	overflow-wrap: break-word;
+}
+
+.wide {
+	grid-column: span 2;
+}
+
+.equals {
+	grid-column: 4;
+	grid-row: 5/7;
+	background-image: url("../images/cat.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	background-color: $light;
 }

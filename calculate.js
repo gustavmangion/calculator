@@ -109,9 +109,9 @@ function calcOnGreyKeys() {
 function doKeyPressed(action) {
 	if (!calcOn) return;
 	if (screenText === onText) screenText = "";
-	console.log(typeof screenText);
 
 	if (operators.includes(action)) {
+		if (screenText === "") return;
 		if (operators.includes(screenText.slice(-1))) {
 			screenText = screenText.slice(0, -1);
 		}
@@ -134,6 +134,7 @@ function calculate() {
 	const textSplit = screenText.split("");
 	if (operators.includes(textSplit[textSplit.length - 1]))
 		textSplit.pop(textSplit.length - 1);
+	toCalc.push(textSplit[0]);
 	for (let i = 1; i < textSplit.length; i++) {
 		if (operators.includes(textSplit[i])) toCalc.push(textSplit[i]);
 		else if (operators.includes(toCalc[toCalc.length - 1]))

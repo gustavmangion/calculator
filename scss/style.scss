@@ -55,10 +55,12 @@ main {
 	grid-column: 1/6;
 	background-color: $dark;
 	margin: 1em 0.5em;
-	padding: 0.5em 1em;
 	color: white;
 	font-size: 2rem;
 	border-radius: 2em;
+	overflow: hidden;
+	width: 14em;
+	border: 0.5em solid $dark;
 }
 
 .side-functions {

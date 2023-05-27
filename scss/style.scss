@@ -11,7 +11,7 @@
 	place-items: center;
 	height: 100vh;
 	font-family: "Orbitron", sans-serif;
-	font-size: 1rem;
+	font-size: 1.1rem;
 }
 header {
 	text-align: center;
@@ -30,7 +30,7 @@ main {
 .calculator {
 	width: 100%;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 2fr;
+	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: 2fr 1fr 1fr 1fr 1fr 1fr;
 	grid-column-start: 2;
 	background-color: $light;
@@ -43,19 +43,19 @@ main {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	grid-column: 1/5;
+	grid-column: 1/6;
 	background-color: $dark;
 	margin: 1em;
-	padding: 0.5em;
+	padding: 0.5em 1em;
 	color: white;
 	font-size: 2rem;
 }
 
 .side-functions {
-	grid-column: 4;
-	grid-row: 2/5;
+	grid-column: 4/6;
+	grid-row: 3/5;
 	display: grid;
-	grid-template-rows: repear(4, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 }
 
 .key {
@@ -68,7 +68,22 @@ main {
 	align-items: center;
 	justify-content: center;
 	font-weight: bold;
-	overflow-wrap: break-word;
+
+	&:hover {
+		background-color: lighten($secondary-color, 10%);
+	}
+
+	&:active {
+		scale: 0.95;
+	}
+}
+
+.key-function {
+	background-color: darken($secondary-color, 25%);
+
+	&:hover {
+		background-color: darken($secondary-color, 15%);
+	}
 }
 
 .wide {
@@ -76,11 +91,20 @@ main {
 }
 
 .equals {
-	grid-column: 4;
+	grid-column: 4/6;
 	grid-row: 5/7;
 	background-image: url("../images/cat.png");
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
 	background-color: $light;
+
+	&:hover {
+		scale: 0.95;
+		background-color: inherit;
+	}
+
+	&:active {
+		scale: 0.9;
+	}
 }

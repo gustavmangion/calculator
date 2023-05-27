@@ -8,14 +8,31 @@ const treatKeyOnText = "Give Catnip";
 const buttons = document.querySelectorAll(".key");
 const screen = document.querySelector(".screen");
 const treatKey = document.querySelector("#treat");
+const equalKey = document.querySelector("#equals");
 const operators = ["*", "-", "/", "+"];
 let operationsCount = 0;
+let petCount = 0;
 
 function buttonPressed(e) {
-	if (operationsCount >= 1) screenText = petMeText;
+	if (operationsCount >= 3) activatePetting();
 	else if (e.target.id !== "") doFunctionKey(e.target.id);
 	else doKeyPressed(e.target.innerText);
 	screen.innerText = screenText;
+}
+
+function activatePetting() {
+	screenText = petMeText;
+	equalKey.addEventListener("mouseenter", catPet);
+}
+
+function catPet(e) {
+	++petCount;
+	if (petCount > 10) {
+		operationsCount = 0;
+		screenText = onText;
+		equalKey.removeEventListener("mouseenter", catPet);
+		screen.innerText = screenText;
+	}
 }
 
 function doFunctionKey(key) {
@@ -142,7 +159,7 @@ function init() {
 	treatKey.innerText = treatKeyOffText;
 	screenText = offText;
 	screen.innerText = screenText;
-	calcOffGreyKeys();
+	// calcOffGreyKeys();
 }
 
 init();

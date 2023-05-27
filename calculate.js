@@ -2,15 +2,18 @@ let screenText = "";
 let calcOn = false;
 const onText = "Let's Meow!";
 const offText = "zzz ...";
+const petMeText = "Pet me!";
 const treatKeyOffText = "Give Treat";
 const treatKeyOnText = "Give Catnip";
 const buttons = document.querySelectorAll(".key");
 const screen = document.querySelector(".screen");
 const treatKey = document.querySelector("#treat");
 const operators = ["*", "-", "/", "+"];
+let operationsCount = 0;
 
 function buttonPressed(e) {
-	if (e.target.id !== "") doFunctionKey(e.target.id);
+	if (operationsCount >= 1) screenText = petMeText;
+	else if (e.target.id !== "") doFunctionKey(e.target.id);
 	else doKeyPressed(e.target.innerText);
 	screen.innerText = screenText;
 }
@@ -91,6 +94,7 @@ function calculate() {
 	result = doCalculate(result, "-");
 
 	screenText = result[0];
+	++operationsCount;
 }
 
 function doCalculate(instructions, action) {

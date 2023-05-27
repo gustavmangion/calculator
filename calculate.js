@@ -96,7 +96,7 @@ function turnOnOff() {
 		treatKey.innerText = treatKeyOffText;
 		calcOffGreyKeys();
 	}
-	// catMeow.play();
+	catMeow.play();
 }
 
 function calcOffGreyKeys() {
@@ -240,7 +240,7 @@ function init() {
 	treatKey.innerText = treatKeyOffText;
 	screenText = offText;
 	screen.innerText = screenText;
-	// calcOffGreyKeys();
+	calcOffGreyKeys();
 }
 
 init();

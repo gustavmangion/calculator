@@ -14,6 +14,7 @@ const catMeow = new Audio("assets/sounds/meow.mp3");
 const catPurr = new Audio("assets/sounds/purr.mp3");
 let operationsCount = 0;
 let petCount = 0;
+let decimalSinceLastOperand = false;
 
 function buttonPressed(e) {
 	if (operationsCount >= 3) activatePetting();
@@ -45,6 +46,7 @@ function doFunctionKey(key) {
 			break;
 		case "clear":
 			screenText = onText;
+			decimalSinceLastOperand = false;
 			break;
 		case "bspace":
 			backspace();
@@ -83,8 +85,15 @@ function calcOnGreyKeys() {
 function doKeyPressed(action) {
 	if (screenText === onText) screenText = "";
 
-	if (operators.includes(action) && operators.includes(screenText.slice(-1)))
-		screenText = screenText.slice(0, -1);
+	if (operators.includes(action)) {
+		if (operators.includes(screenText.slice(-1))) {
+			screenText = screenText.slice(0, -1);
+		}
+		decimalSinceLastOperand = false;
+	} else if (action === ".") {
+		if (decimalSinceLastOperand) return;
+		decimalSinceLastOperand = true;
+	}
 
 	screenText += action;
 }

@@ -42,6 +42,7 @@ let petCount = 0;
 let decimalSinceLastOperand = false;
 
 function buttonPressed(e) {
+	e.target.blur(); //prevent focused button from being triggered when enter is pressed
 	if (operationsCount >= 3) activatePetting();
 	else if (e.target.id !== "") doFunctionKey(e.target.id);
 	else doKeyPressed(e.target.innerText);

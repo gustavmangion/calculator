@@ -51,6 +51,7 @@ function buttonPressed(e) {
 function activatePetting() {
 	screenText = petMeText;
 	equalKey.addEventListener("mouseenter", catPet);
+	equalKey.addEventListener("touchstart", catPet);
 }
 
 function catPet(e) {
@@ -60,6 +61,7 @@ function catPet(e) {
 		operationsCount = 0;
 		screenText = onText;
 		equalKey.removeEventListener("mouseenter", catPet);
+		equalKey.removeEventListener("touchstart", catPet);
 		screen.innerText = screenText;
 	}
 }

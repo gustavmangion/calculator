@@ -219,7 +219,7 @@ function doCalculate(instructions, action) {
 function keyPressed(e) {
 	if (e.key === "/") e.preventDefault();
 	else if (e.key === "p") catPet();
-	if (operationsCount >= 3) activatePetting();
+	else if (operationsCount >= 3) activatePetting();
 	else if (allowedKeys.includes(e.key)) {
 		switch (e.key) {
 			case "=":

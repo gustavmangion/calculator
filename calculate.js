@@ -55,10 +55,13 @@ function activatePetting() {
 }
 
 function catPet(e) {
+	if (operationsCount < 3) return;
+
 	++petCount;
 	catPurr.play();
 	if (petCount > 10) {
 		operationsCount = 0;
+		petCount = 0;
 		screenText = onText;
 		equalKey.removeEventListener("mouseenter", catPet);
 		equalKey.removeEventListener("touchend", catPet);
@@ -215,6 +218,7 @@ function doCalculate(instructions, action) {
 
 function keyPressed(e) {
 	if (e.key === "/") e.preventDefault();
+	else if (e.key === "p") catPet();
 	if (operationsCount >= 3) activatePetting();
 	else if (allowedKeys.includes(e.key)) {
 		switch (e.key) {
@@ -232,9 +236,6 @@ function keyPressed(e) {
 				break;
 			case "t":
 				doFunctionKey("treat");
-				break;
-			case "p":
-				catPet();
 				break;
 			default:
 				doKeyPressed(e.key);

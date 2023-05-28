@@ -29,6 +29,11 @@ header {
 	h3 {
 		padding-top: 1em;
 		color: lighten($dark, 20%);
+		font-size: 1.2rem;
+		strong {
+			color: lighten($dark, 10%);
+			text-decoration: underline;
+		}
 	}
 }
 

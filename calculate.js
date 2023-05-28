@@ -140,7 +140,7 @@ function doKeyPressed(action) {
 }
 
 function backspace() {
-	if (screenText != onText && screenText.length > 0)
+	if (screenText != onText && screenText != hissText && screenText.length > 0)
 		screenText = screenText.slice(0, -1);
 }
 
